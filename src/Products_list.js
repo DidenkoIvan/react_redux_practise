@@ -54,8 +54,11 @@ class ProductsList extends Component {
                     <p>Color: {product.color}</p>
                     <p>Price: {product.price}</p>
                     <Button onClick={this.openModal} text="Add to cart" />
-                      {this.state.showModal && (
-                      <Modal onClose={this.closeModal} />
+                    {this.state.showModal && (
+                      <Modal onClose={this.closeModal}
+                      header="Would you like to add this item to cart?"
+                      closeButton={true}
+                      text="Add to cart" />
                      )}
                      <button onClick={this.toggleFavorite} className={`favorite-button ${isFavorited ? 'active' : ''}`}>
                         <span role="img" aria-label="favorite">⭐</span>

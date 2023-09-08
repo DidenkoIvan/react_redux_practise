@@ -48,7 +48,7 @@ function App() {
           onClose={() => setSecondModalOpen(false)}
         />
       )}
-      <ProductsList />
+      <ProductsList/>
       <Products />
     </div>
   );
