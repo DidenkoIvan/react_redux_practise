@@ -1,14 +1,16 @@
 import axios from 'axios';
 import React, { Component } from 'react';
-import Button from './Button';
-import Modal from './Modal';
+import Button from '../Button/Button';
+import Modal from '../Modal/Modal';
+import "./ProductCards.scss";
+
 
 class Products extends Component {
     constructor() {
         super();
         this.state = {
             products: [], 
-            showModal: false,
+            // showModal: false,
             isFavorited: false,
           };
     }
@@ -20,13 +22,13 @@ class Products extends Component {
     };
 
 
-    openModal = () => {
-      this.setState({ showModal: true });
-    }
+    // openModal = () => {
+    //   this.setState({ showModal: true });
+    // }
   
-    closeModal = () => {
-      this.setState({ showModal: false });
-    }
+    // closeModal = () => {
+    //   this.setState({ showModal: false });
+    // }
 
     componentDidMount() {
         axios.get('../products.json')
@@ -48,11 +50,11 @@ class Products extends Component {
         const { isFavorited } = this.state;
 
         return (
-          <div className='products'>
+          <div className='productCards'>
             <h1>Перелік товарів: </h1>
-            <ul className='products_list'>
+            <ul className='productCards__list'>
               {products.map(product => (
-                <li className='products_list_item' key={product.name}>
+                <li className='productCards__list_item' key={product.name}>
                     <img src={product.image} alt={`Image`} />
                     <h2>{product.name}</h2>
                     <p>Article: {product.article}</p>

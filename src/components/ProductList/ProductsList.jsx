@@ -1,14 +1,16 @@
 import axios from 'axios';
 import React, { Component } from 'react';
-import Button from './Button';
-import Modal from './Modal';
+import Button from '../Button/Button';
+import Modal from '../Modal/Modal';
+
+import "./ProductList.scss";
 
 class ProductsList extends Component {
     constructor() {
         super();
         this.state = {
             productsList: [], 
-            showModal: false,
+            // showModal: false,
             isFavorited: false,
           };
     }
@@ -19,18 +21,17 @@ class ProductsList extends Component {
       }));
     };
 
-    openModal = () => {
-      this.setState({ showModal: true });
-    }
+    // openModal = () => {
+    //   this.setState({ showModal: true });
+    // }
   
-    closeModal = () => {
-      this.setState({ showModal: false });
-    }
+    // closeModal = () => {
+    //   this.setState({ showModal: false });
+    // }
 
     componentDidMount() {
-        axios.get('../products.json')
+        axios.get('./products.json')
           .then(response => {
-            console.log(response);
             this.setState({ productsList: response.data })
           })
           .catch(error => {
@@ -53,13 +54,13 @@ class ProductsList extends Component {
                     <p>Article: {product.article}</p>
                     <p>Color: {product.color}</p>
                     <p>Price: {product.price}</p>
-                    <Button onClick={this.openModal} text="Add to cart" />
-                    {this.state.showModal && (
+                    <Button onClick={() => this.props.openModal(product.article)} text="Add to cart" />
+                    {/* {this.state.showModal && (
                       <Modal onClose={this.closeModal}
                       header="Would you like to add this item to cart?"
                       closeButton={true}
                       text="Add to cart" />
-                     )}
+                     )} */}
                      <button onClick={this.toggleFavorite} className={`favorite-button ${isFavorited ? 'active' : ''}`}>
                         <span role="img" aria-label="favorite">⭐</span>
                     </button>

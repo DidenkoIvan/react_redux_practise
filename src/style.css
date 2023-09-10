@@ -7,232 +7,30 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body, h1, h2, p {
+  margin: 0;
+  padding: 0;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
 #root {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.button {
-  width: 100%;
-  background-color: blue;
-  padding: 10px 20px;
-  color: yellow;
-  cursor: pointer;
-  margin: 5px;
-  border-radius: 5px;
-}
-
-.container {
-  width: 100%;
-  /* height: 100%; */
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-around;
-}
-
-.modal_header {
-  display: flex;
-  width: 100%;
-  /* height: 2em; */
-  background-color: rgba(232, 49, 49, 0.788);
-  justify-content: space-between;
-  align-items: center;
   margin: 0;
-  text-transform: uppercase;
-}
-
-.modal_header h2 {
-  width: 100%;
-  height: 20%;
-  margin-left: 20px;
-}
-
-.modalButton {
-  width: 6%;
-  height: 100%;
-  background-color: rgba(232, 49, 49, 0.788);
-  border: 0 solid ;
-  position: relative;
-}
-
-.modalButton::before, .modalButton::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 16px;
-  height: 2px;
-  background-color: #000;
-  transform: translate(-50%, -50%);
-}
-
-.modalButton::before {
-  transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.modalButton::after {
-  transform: translate(-50%, -50%) rotate(-45deg);
-}
-
-.modalButton:hover {
-  background-color: rgba(153, 32, 32, 0.788);
-  cursor: pointer;
-}
-
-.modal_container {
-  width: 70%;
-  height: 33%;
-  background-color: red;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  margin: 20px;
-}
-
-.button_close {
-  width: 120px;
-  height: 40px;
-  margin-bottom: 20px;
-}
-
-.button_close button {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(172, 22, 22, 0.788);
-  border: 1px solid red;
-  border-radius: 5px;
-  color: black;
-  text-transform: uppercase;
-}
-
-.button_close button:hover {
-  background-color: rgba(111, 13, 13, 0.788);
-  cursor: pointer;
-}
-
-.buttons {
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.button_ok {
-  width: 120px;
-  height: 40px;
-  margin-bottom: 20px;
-}
-
-.button_ok button {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(172, 22, 22, 0.788);
-  border: 1px solid red;
-  border-radius: 5px;
-  color: black;
-  text-transform: uppercase;
-}
-
-.button_ok button:hover {
-  background-color: rgba(111, 13, 13, 0.788);
-  cursor: pointer;
-}
-
-.products {
-  width: 71%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 10px;
-}
-.products h1 {
-  text-transform: uppercase;
-  margin: 0;
-}
-
-.products_list {
-  width: 100%;
-  padding: 10px;
-}
-
-.products_list_item {
-  width: 100%;
-  height: 7em;
-  list-style: none;
-  background-color: aqua;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: 20px 0 20px 0 ;
-  justify-content: space-around;
   padding: 0;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 100vh;
 }
 
-.products_list_item img {
-  width: 100px;
-  height: 100px;
-}
-
-.productsList {
-  width: 22%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #4bcbcb;
-  padding: 10px;
-  border: 2px solid rgb(69, 172, 69);
-}
-
-.productsList_list { 
-  width: 100%;
-  height: 50%;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.productsList_item {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  border: 2px solid rgb(65, 131, 65);
-  border-radius: 2px;
-  padding: 0;
-  margin: 10px 0;
-}
-
-.productsList_item img {
-  width: 20%;
-  height: 20%;
-}
-
-.productsList_item h2 {
-  margin: 10px 0;
-  text-transform: uppercase;
-  color: #3a2222;
-}
-
-.productsList_item p {
-  font-size: 20px;
-  font-weight: 500;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  background-color: #2dbaba;
-  margin: 5px 0;
+.App {
+  background-image: url('/public/images/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: grid;
+  grid-template-rows: auto 1fr;
 }
 
 .favorite-button {
@@ -245,4 +43,14 @@ code {
 
 .favorite-button.active {
   filter: hue-rotate(0);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); 
+  z-index: 0; 
 }

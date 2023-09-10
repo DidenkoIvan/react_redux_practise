@@ -1,55 +1,87 @@
 import React, { useState } from 'react';
-import Button from './Button';
-import Modal from './Modal';
-import Products from './Products_cards';
-import ProductsList from './Products_list'
+import Button from './components/Button/Button';
+import Modal from './components/Modal/Modal';
+import Products from './components/ProductCards/ProductCards';
+import ProductsList from './components/ProductList/ProductsList';
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 
 
 function App() {
-  const [firstModalOpen, setFirstModalOpen] = useState(false);
-  const [secondModalOpen, setSecondModalOpen] = useState(false);
-  const [backgroundColor, setBackgroundColor] = useState('white');
-  const changeBackgroundColor = () => {
-    const newColor = "#808080";  
-    setBackgroundColor(newColor);
-  };
-  
-  return (
-    <div className='App container' style={{ backgroundColor }}>
-      {/* <Button
-        backgroundColor="blue"
-        text="Open first modal"
-        onClick= {() => {setFirstModalOpen(true);changeBackgroundColor()}}
-      />
-      <Button
-        backgroundColor="green"
-        text="Open second modal"
-        onClick={() => {setSecondModalOpen(true);changeBackgroundColor()} }
-      /> */}
+  const [isFirstModalOpen, setIsFirstModalOpen] = useState(false);
+  const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
 
-      {firstModalOpen && (
+  const openFirstModal = () => {
+    setIsFirstModalOpen(true);
+  };
+
+  const closeFirstModal = () => {
+    setIsFirstModalOpen(false);
+  };
+
+  const openSecondModal = () => {
+    setIsSecondModalOpen(true);
+  };
+
+  const closeSecondModal = () => {
+    setIsSecondModalOpen(false);
+  };
+
+  const handleClickOnOverlay = () => {
+    closeFirstModal();
+    closeSecondModal();
+  }
+
+  return (
+    <div className='App container'>
+        <Header />
+
+        <Button 
+          backgroundColor = "red"
+          text = "Open first modal"
+          onClick={openFirstModal}
+        />
+
+        <Button 
+          backgroundColor = "green"
+          text = "Open second modal"
+          onClick={openSecondModal}
+        />
+
+        <Modal 
+          isOpen={isFirstModalOpen}
+          header="First modal header text"
+          closeButton={closeFirstModal} 
+          text="I am modal text"
+          action = {<Button text="Nope" backgroundColor = "red" />}
+          actionOk = {<Button text="Ok" backgroundColor = "Green"/>}
+        />
+
+        <Modal 
+          isOpen={isSecondModalOpen}
+          header="It`s a second modal header text"
+          closeButton={closeSecondModal} 
+          text="Text of 2nd modal"
+          action = {<Button text="Nope" backgroundColor = "red" />} 
+          actionOk = {<Button text="Ok" backgroundColor = "Green"/>}
+        />
+        {isFirstModalOpen && <div className="overlay" onClick={handleClickOnOverlay}/>}
+        {isSecondModalOpen && <div className="overlay" onClick={handleClickOnOverlay}/>}
+        {/* <Button /> */}
+        {/* <Button />
+        {modalAriticle && (
         <Modal
           header="First Modal"
           closeButton={true}
           text="This is the first modal."
-          actions={<button onClick={() => setFirstModalOpen(false)}>Close</button>}
+          actions={<button onClick={() => openModal(null)}>Close</button>}
           actionsOk={<button>OK</button>}
-          onClose={() => setFirstModalOpen(false)}
-        />
-      )}
-
-      {secondModalOpen && (
-        <Modal
-          header="Second Modal"
-          closeButton={true}
-          text="This is the second modal."
-          actions={<button onClick={() => setSecondModalOpen(false)}>Close</button>}
-          actionsOk={<button>OK</button>}
-          onClose={() => setSecondModalOpen(false)}
-        />
-      )}
-      <ProductsList/>
-      <Products />
+          onClose={openModal}
+        />)}
+      <ProductsList openModal={openModal}/>
+      <Products /> */}
+      
+      <Footer />
     </div>
   );
 }
