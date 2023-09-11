@@ -1,75 +1,71 @@
-import axios from 'axios';
-import React, { Component } from 'react';
-import Button from '../Button/Button';
-import Modal from '../Modal/Modal';
-
+import React, { useState, useEffect } from 'react';
 import "./ProductList.scss";
+import Button from '../Button/Button';
+import ModalForm from '../Modal/Modal';
 
-class ProductsList extends Component {
-    constructor() {
-        super();
-        this.state = {
-            productsList: [], 
-            // showModal: false,
-            isFavorited: false,
-          };
-    }
+function ProductList() {
+  const [productsList, setData] = useState(null);
 
-    toggleFavorite = () => {
-      this.setState((prevState) => ({
-        isFavorited: !prevState.isFavorited,
-      }));
+  useEffect(() => {
+    
+    const url = './products.json';
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((jsonData) => {
+        // Store the fetched data in the component's state
+        setData(jsonData);
+        localStorage.setItem('products', JSON.stringify(jsonData))
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []); // The empty array [] means this effect runs once, similar to componentDidMount in class components
+
+   
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const closeModal = () => {
+      setIsModalOpen(false);
     };
+    const ProductListButton = () => {
+      setIsModalOpen(true);
+    };
+    
 
-    // openModal = () => {
-    //   this.setState({ showModal: true });
-    // }
-  
-    // closeModal = () => {
-    //   this.setState({ showModal: false });
-    // }
-
-    componentDidMount() {
-        axios.get('./products.json')
-          .then(response => {
-            this.setState({ productsList: response.data })
-          })
-          .catch(error => {
-            console.error('Помилка при отриманні даних:', error)
-          });
-      }
-
-      render() {
-        const { productsList } = this.state;
-        const { isFavorited } = this.state;
-
-        return (
-          <div className='productsList'>
-            <h1>Список продуктів: </h1>
-            <ul className='productsList_list'>
-              {productsList.map(product => (
-                <li className='productsList_item' key={product.name}>
-                    {/* <img src={product.image} alt={`Image`} /> */}
-                    <h2>{product.name}</h2>
-                    <p>Article: {product.article}</p>
-                    <p>Color: {product.color}</p>
-                    <p>Price: {product.price}</p>
-                    <Button onClick={() => this.props.openModal(product.article)} text="Add to cart" />
-                    {/* {this.state.showModal && (
-                      <Modal onClose={this.closeModal}
-                      header="Would you like to add this item to cart?"
-                      closeButton={true}
-                      text="Add to cart" />
-                     )} */}
-                     <button onClick={this.toggleFavorite} className={`favorite-button ${isFavorited ? 'active' : ''}`}>
-                        <span role="img" aria-label="favorite">⭐</span>
-                    </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-        );
-      }
+  return (
+    <>
+      {productsList ? ( 
+        <div className='productsList'>
+        <h1>Products list: </h1>
+        <ul className='productsList_list'>
+          {productsList.map(product => (
+            <li className='productsList_item' key={product.name}>
+              <img src={product.image} alt={`Image`} />
+              <p className='productsList_item_name'>{product.name}</p>
+              <p>Article: {product.article}</p>
+              <p>Color: {product.color}</p>
+              <p className='productsList_item_price'>Price: $ {product.price}</p>
+              <Button backgroundColor = "red" text ="Add to Cart" onClick={ProductListButton}/>
+            </li>
+          ))}
+        </ul>
+        <ModalForm isOpen={isModalOpen}
+          header={"Would you like to add this product into the cart ?"}
+          text={""}
+          closeButton={closeModal} 
+          action = {<Button text="Nope" backgroundColor = "pink" />}
+          actionOk = {<Button text="Ok" backgroundColor = "Green"/>}
+        />
+        </div>
+        
+      ) : (
+        <p>Loading...</p>
+      )}
+    </>
+  );
 }
 
-export default ProductsList;
+export default ProductList;
+
+
+

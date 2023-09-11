@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import Button from './components/Button/Button';
 import Modal from './components/Modal/Modal';
-import Products from './components/ProductCards/ProductCards';
+import ProductCards from './components/ProductCards/ProductCards';
 import ProductsList from './components/ProductList/ProductsList';
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+
 
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
     <div className='App container'>
         <Header />
 
-        <Button 
+        {/* <Button 
           backgroundColor = "red"
           text = "Open first modal"
           onClick={openFirstModal}
@@ -66,21 +67,11 @@ function App() {
           actionOk = {<Button text="Ok" backgroundColor = "Green"/>}
         />
         {isFirstModalOpen && <div className="overlay" onClick={handleClickOnOverlay}/>}
-        {isSecondModalOpen && <div className="overlay" onClick={handleClickOnOverlay}/>}
-        {/* <Button /> */}
-        {/* <Button />
-        {modalAriticle && (
-        <Modal
-          header="First Modal"
-          closeButton={true}
-          text="This is the first modal."
-          actions={<button onClick={() => openModal(null)}>Close</button>}
-          actionsOk={<button>OK</button>}
-          onClose={openModal}
-        />)}
-      <ProductsList openModal={openModal}/>
-      <Products /> */}
-      
+        {isSecondModalOpen && <div className="overlay" onClick={handleClickOnOverlay}/>} */}
+      <div className='main__wrapper'>
+        <ProductsList />
+        <ProductCards /> 
+      </div>
       <Footer />
     </div>
   );

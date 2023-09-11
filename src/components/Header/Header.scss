@@ -1,13 +1,59 @@
 .header {
     // width: 100%;
+    height: 100%;
     background-color: #333; 
     color: #fff;  
-    padding: 20px;  
+    display: flex;
+    align-items: center;
     text-align: center;  
     opacity: 60%;
+    list-style: none;
 }
 
 .header:hover {
     opacity: 90%;
     transition: .5s;
+}
+
+.header_items {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header_icon {
+    width: 5%;
+    height: 40%;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.header_favorite {
+    border-radius: 30px;
+    width: 3%;
+    height: 40%;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.header_cart {
+    border-radius: 30px;
+    width: 3%;
+    height: 40%;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.header_favorite:hover {
+    background-color: rgb(133, 165, 245);
+}
+
+.header_cart:hover {
+    background-color: rgb(133, 165, 245);
 }

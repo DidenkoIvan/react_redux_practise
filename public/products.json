@@ -1,71 +1,72 @@
-[{
-    "name": "Apple",
-    "price":100,
-    "image": "images/apple.jpg",
-    "article": 32132131,
-    "color": "red"
-},
-{
-    "name": "Banana",
-    "price":50,
-    "image": "images/banana.jpg",
-    "article": 1213213,
-    "color": "red"
-},
-{
-    "name": "Orange",
-    "price":30,
-    "image": "images/orange.jpg",
-    "article": 1212,
-    "color": "red"
-},
-{
-    "name": "pineapple",
-    "price":12,
-    "image": "images/PINEAPPLE.webp",
-    "article": 4512312,
-    "color": "red"
-},
-{
-    "name": "Strawberry",
-    "price":100,
-    "image": "images/strawberry.webp",
-    "article": 2312312312,
-    "color": "red"
-},
-{
-    "name": "Watermelon",
-    "price":100,
-    "image": "images/Watermelon.jpg",
-    "article": 2312312312,
-    "color": "red"
-},
-{
-    "name": "Mango",
-    "price":100,
-    "image": "images/mango.jpg",
-    "article": 2312312312,
-    "color": "red"
-},
-{
-    "name": "Potato",
-    "price":10,
-    "image": "images/potato.jpg",
-    "article": 2312312312,
-    "color": "red"
-},
-{
-    "name": "Peach",
-    "price":20,
-    "image": "images/peach.jpg",
-    "article": 2312312312,
-    "color": "red"
-},
-{
-    "name": "Kivi",
-    "price":34,
-    "image": "images/kivi.jpg",
-    "article": 2312312312,
-    "color": "red"
-}]
- 
+[
+    {
+        "name": "Apple",
+        "price": 100,
+        "image": "images/apple.jpg",
+        "article": "32132131",
+        "color": "red"
+    },
+    {
+        "name": "Banana",
+        "price": 50,
+        "image": "images/banana.jpg",
+        "article": "1213213",
+        "color": "blue"
+    },
+    {
+        "name": "Orange",
+        "price": 30,
+        "image": "images/orange.jpg",
+        "article": "1212",
+        "color": "white"
+    },
+    {
+        "name": "pineapple",
+        "price": 12,
+        "image": "images/PINEAPPLE.webp",
+        "article": "4512312",
+        "color": "orange"
+    },
+    {
+        "name": "Strawberry",
+        "price": 100,
+        "image": "images/strawberry.webp",
+        "article": "2312312312",
+        "color": "pink"
+    },
+    {
+        "name": "Watermelon",
+        "price": 100,
+        "image": "images/Watermelon.jpg",
+        "article": "2386712312",
+        "color": "grey"
+    },
+    {
+        "name": "Mango",
+        "price": 100,
+        "image": "images/mango.jpg",
+        "article": "235656312",
+        "color": "black"
+    },
+    {
+        "name": "Potato",
+        "price": 10,
+        "image": "images/potato.jpg",
+        "article": "231682312",
+        "color": "yellow"
+    },
+    {
+        "name": "Peach",
+        "price": 20,
+        "image": "images/peach.jpg",
+        "article": "20972312",
+        "color": "green"
+    },
+    {
+        "name": "Kivi",
+        "price": 34,
+        "image": "images/kivi.jpg",
+        "article": "2378322312",
+        "color": "black"
+    }
+]
