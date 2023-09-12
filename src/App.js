@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from './components/Button/Button';
 import Modal from './components/Modal/Modal';
 import ProductCards from './components/ProductCards/ProductCards';
@@ -9,9 +9,11 @@ import Footer from "./components/Footer/Footer";
 
 
 function App() {
+  
   const [isFirstModalOpen, setIsFirstModalOpen] = useState(false);
   const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
 
+  
   const openFirstModal = () => {
     setIsFirstModalOpen(true);
   };
