@@ -1,83 +1,58 @@
 import React, { useState, useEffect } from 'react';
-import Button from './components/Button/Button';
-import Modal from './components/Modal/Modal';
+import { Route, Routes } from 'react-router-dom';
+import NotFound from './components/NotFound/NotFound';
 import ProductCards from './components/ProductCards/ProductCards';
 import ProductsList from './components/ProductList/ProductsList';
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-
-
+import Cart from './components/Cart/Cart';
+import Favourite  from './components/Favourite/Favourite';
 
 function App() {
+  const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
   
-  const [isFirstModalOpen, setIsFirstModalOpen] = useState(false);
-  const [isSecondModalOpen, setIsSecondModalOpen] = useState(false);
+useEffect(() => {
+    window.addEventListener('beforeunload', clearLocalStorage);
+    return () => {
+      window.removeEventListener('beforeunload', clearLocalStorage);
+    };
+  }, []);
 
-  
-  const openFirstModal = () => {
-    setIsFirstModalOpen(true);
+  const clearLocalStorage = () => {
+    localStorage.clear();
   };
 
-  const closeFirstModal = () => {
-    setIsFirstModalOpen(false);
-  };
-
-  const openSecondModal = () => {
-    setIsSecondModalOpen(true);
-  };
-
-  const closeSecondModal = () => {
-    setIsSecondModalOpen(false);
-  };
-
-  const handleClickOnOverlay = () => {
-    closeFirstModal();
-    closeSecondModal();
+  function addToCart(article) {
+    setCart((prev) => {
+      const newArray = [...prev, article];
+      localStorage.setItem('cart', JSON.stringify(newArray));
+      return newArray
+    })
   }
+// outletcontext
+  return (
+    <Routes>
+      <Route path="/" element={<Home cartLength={cart.Length} addToCart={addToCart}/>} />
+      <Route path="/Cart" element={<Cart />}/>
+      <Route path="/Favourite" element={<Favourite />}/>
+      <Route path="*" element={<NotFound />}/>
+    </Routes>
+  );
+}
 
+function Home({cartLength, addToCart}) {
   return (
     <div className='App container'>
-        <Header />
-
-        {/* <Button 
-          backgroundColor = "red"
-          text = "Open first modal"
-          onClick={openFirstModal}
-        />
-
-        <Button 
-          backgroundColor = "green"
-          text = "Open second modal"
-          onClick={openSecondModal}
-        />
-
-        <Modal 
-          isOpen={isFirstModalOpen}
-          header="First modal header text"
-          closeButton={closeFirstModal} 
-          text="I am modal text"
-          action = {<Button text="Nope" backgroundColor = "red" />}
-          actionOk = {<Button text="Ok" backgroundColor = "Green"/>}
-        />
-
-        <Modal 
-          isOpen={isSecondModalOpen}
-          header="It`s a second modal header text"
-          closeButton={closeSecondModal} 
-          text="Text of 2nd modal"
-          action = {<Button text="Nope" backgroundColor = "red" />} 
-          actionOk = {<Button text="Ok" backgroundColor = "Green"/>}
-        />
-        {isFirstModalOpen && <div className="overlay" onClick={handleClickOnOverlay}/>}
-        {isSecondModalOpen && <div className="overlay" onClick={handleClickOnOverlay}/>} */}
+      <Header cartLength={cartLength} />
       <div className='main__wrapper'>
-        <ProductsList />
-        <ProductCards /> 
+        <ProductsList click={addToCart}/>
+        <ProductCards click={addToCart}/> 
       </div>
       <Footer />
     </div>
   );
 }
+
 
 export default App;
 

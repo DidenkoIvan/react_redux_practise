@@ -1,6 +1,38 @@
 .cart {
+    width: 100%;
+    height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: rgb(44, 158, 220);
 }
 
+.cart__header {
+    font-size: 28px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: red;
+}
+
+.cart__items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: aqua;
+    
+}
+
+.cart__items_list {
+    width: 80%;
+    height: 100%;
+    background-color: rgb(66, 125, 251);
+}
+
+.cart__items li {
+    list-style: none;
+    cursor: pointer;
+}

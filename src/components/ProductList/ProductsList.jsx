@@ -3,7 +3,7 @@ import "./ProductList.scss";
 import Button from '../Button/Button';
 import ModalForm from '../Modal/Modal';
 
-function ProductList() {
+function ProductList({click}) {
   const [productsList, setData] = useState(null);
 
   useEffect(() => {
@@ -13,14 +13,14 @@ function ProductList() {
     fetch(url)
       .then((response) => response.json())
       .then((jsonData) => {
-        // Store the fetched data in the component's state
+        
         setData(jsonData);
         localStorage.setItem('products', JSON.stringify(jsonData))
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
-  }, []); // The empty array [] means this effect runs once, similar to componentDidMount in class components
+  }, []);  
 
   const [isArticle, setIsArticle] = useState("");
 
@@ -31,7 +31,6 @@ function ProductList() {
   const ProductListButton = (article) => {
     setIsModalOpen(true);
     setIsArticle(article);
-    
   };
 
   return (
@@ -56,10 +55,13 @@ function ProductList() {
           <ModalForm isOpen={isModalOpen} 
             article={isArticle}
             header={"Would you like to add this product into the cart ?"}
-            text={""}
+            text={"Would you like to add this product into the cart ?"}
             closeButton={closeModal}
             action={<Button text="Nope" backgroundColor="pink" />}
-            actionOk={<Button text="Ok" backgroundColor="Green" />}
+            actionOk={<Button text="Ok" backgroundColor="Green" onClick={() => {
+              click(isArticle)
+              closeModal()
+            }}/>}
           />
         </div>
 

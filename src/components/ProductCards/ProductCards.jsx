@@ -3,7 +3,7 @@ import "./ProductCards.scss";
 import Button from '../Button/Button';
 import ModalForm from '../Modal/Modal';
 
-function Products() {
+function Products({click}) {
   const [productCards, setData] = useState(null);
 
   useEffect(() => {
@@ -51,11 +51,16 @@ function Products() {
               </li>
             ))}
           </ul>
-          <ModalForm isOpen={isModalOpen}
+          <ModalForm isOpen={isModalOpen} 
             article={isArticle}
             header={"Would you like to add this product into the cart ?"}
-            text={""}
+            text={"Would you like to add this product into the cart ?"}
             closeButton={closeModal}
+            action={<Button text="Nope" backgroundColor="pink" />}
+            actionOk={<Button text="Ok" backgroundColor="Green" onClick={() => {
+              click(isArticle)
+              closeModal()
+            }}/>}
           />
         </div>
       ) : (

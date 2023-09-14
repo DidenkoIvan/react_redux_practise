@@ -1,24 +1,44 @@
-import { BsFillBasketFill } from "react-icons/bs";
-import React, { useState, useEffect } from 'react';
-import "./Cart.scss"
+import React, { useState } from 'react';
+import "./Cart.scss";
 
 
 function Cart() {
     const [cart, setCart] = useState([]);
 
-    useEffect(() => {
-      const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
-      setCart(savedCart);
+    useState(() => {
+        const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+        setCart(savedCart);
     }, []);
 
-    // localStorage.clear();
-
-        return (
-        <div className="cart">
-            <p>{cart.length}</p>
-             <BsFillBasketFill />
-        </div>
+    return (
+        <>
+            <div className="cart">
+                <div className="cart__header">
+                    <h2>Shopping Cart</h2>
+                </div>
+                <div className="cart__items">
+                    <ul className="cart__items_list">
+                        {cart.map((item) => (
+                            <li>{item}</li>
+                        ))}
+                    </ul>
+                </div>
+                <div>
+                    <p>Total: $0.00</p>
+                    <p>Quontity of products: {cart.length}</p>
+                </div>
+                <button>Place an order</button>
+            </div>
+        </>
     )
 }
+
+<div class="cart">
+
+
+
+
+</div>
+
 
 export default Cart;

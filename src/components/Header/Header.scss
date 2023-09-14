@@ -8,6 +8,7 @@
     text-align: center;  
     opacity: 60%;
     list-style: none;
+    text-decoration: none;
 }
 
 .header:hover {
@@ -28,19 +29,35 @@
 }
 
 .header_icon {
-    width: 5%;
+    width: 16%;
     height: 40%;
     margin: 10px;
     cursor: pointer;
+    border-radius: 30px;
+}
+
+.header_icon a {
+    text-decoration: none;
+    color: #fff;
 }
 
 .header_favorite {
-    border-radius: 30px;
+    display: flex;
     width: 6%;
     height: 40%;
     cursor: pointer;
     margin-right: 10px;
+    
 }
+
+.header_favorite a {
+    text-decoration: none;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+} 
+
 
 .header_cart {
     border-radius: 30px;
@@ -48,12 +65,30 @@
     height: 40%;
     cursor: pointer;
     margin-right: 10px;
+    text-decoration: none;
+    
+}
+
+.header_cart a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 30px;
 }
 
 .header_favorite:hover {
     background-color: rgb(133, 165, 245);
+    border-radius: 30px;
 }
 
 .header_cart:hover {
+    background-color: rgb(133, 165, 245);
+}
+
+.header_icon:hover {
     background-color: rgb(133, 165, 245);
 }
