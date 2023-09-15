@@ -32,7 +32,7 @@ function ProductList({click}) {
     setIsModalOpen(true);
     setIsArticle(article);
   };
-
+  
   return (
     <>
       {productsList ? (

@@ -22,17 +22,57 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    background-color: aqua;
-    
+    background-color: aqua;  
 }
 
 .cart__items_list {
+    list-style-position: outside; /* Place numbers outside the list item */
+    padding-left: 20px; /* Add some padding to the left of the list items */
+    list-style-type: none; /* Remove default numbering */
+    counter-reset: my-counter;
     width: 80%;
     height: 100%;
     background-color: rgb(66, 125, 251);
 }
 
-.cart__items li {
-    list-style: none;
-    cursor: pointer;
+.cart__items_list li {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px;
+    background-color: rgb(127 160 231);
+}
+
+.cart__items_list li::before {
+    content: counter(my-counter);  
+    counter-increment: my-counter;
+    margin-right: 5px;  
+  }
+
+.buttons__container {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 10px 0 10px 0;
+}
+
+.cart__delete-button {
+    border: 2px solid rgb(162, 182, 226);
+    border-radius: 20px;
+    margin-left: 20px;
+    background-color: aqua;
+}
+
+.cart__delete-button:hover {
+    border: 2px solid rgb(47, 66, 106);
+    background-color: rgb(21, 117, 117);
+}
+
+.cart__totalPrice {
+    font-size: 30px;
+    font-weight: 600;
 }
