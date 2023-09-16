@@ -3,8 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 import NotFound from './components/NotFound/NotFound';
 import ProductCards from './components/ProductCards/ProductCards';
 import ProductsList from './components/ProductList/ProductsList';
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
 import Cart from './components/Cart/Cart';
 import Favourite  from './components/Favourite/Favourite';
 
@@ -40,15 +38,14 @@ useEffect(() => {
   );
 }
 
-function Home({cartLength, addToCart}) {
+function Home({addToCart}) {
   return (
     <div className='App container'>
-      <Header cartLength={cartLength} />
       <div className='main__wrapper'>
         <ProductsList click={addToCart}/>
         <ProductCards click={addToCart}/> 
       </div>
-      <Footer />
+      
     </div>
   );
 }

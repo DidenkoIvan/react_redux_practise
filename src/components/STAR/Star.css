@@ -1,0 +1,8 @@
+.yellow {
+    
+    filter: hue-rotate(0deg);
+}
+
+.gray {
+    filter: hue-rotate(180deg);
+}

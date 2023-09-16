@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "./ProductCards.scss";
 import Button from '../Button/Button';
 import ModalForm from '../Modal/Modal';
+import Star from '../STAR/Star';
 
 function Products({click}) {
   const [productCards, setData] = useState(null);
@@ -48,6 +49,7 @@ function Products({click}) {
                 <Button backgroundColor="red" text="Add to Cart" onClick={() => {
                   ProductCardButton(product.article)
                 }} />
+                <Star />
               </li>
             ))}
           </ul>

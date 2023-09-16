@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import "./ProductList.scss";
 import Button from '../Button/Button';
 import ModalForm from '../Modal/Modal';
+import Star from '../STAR/Star';
 
 function ProductList({click}) {
   const [productsList, setData] = useState(null);
+  const [isArticle, setIsArticle] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
 
@@ -22,9 +25,6 @@ function ProductList({click}) {
       });
   }, []);  
 
-  const [isArticle, setIsArticle] = useState("");
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -32,6 +32,7 @@ function ProductList({click}) {
     setIsModalOpen(true);
     setIsArticle(article);
   };
+
   
   return (
     <>
@@ -41,14 +42,15 @@ function ProductList({click}) {
           <ul className='productsList_list'>
             {productsList.map(product => (
               <li className='productsList_item' key={product.name}>
-                <img src={product.image} alt={`Image`} />
-                <p className='productsList_item_name'>{product.name}</p>
-                <p>Article: {product.article}</p>
-                <p>Color: {product.color}</p>
-                <p className='productsList_item_price'>Price: $ {product.price}</p>
-                <Button backgroundColor="red" text="Add to Cart" onClick={() => {
-                  ProductListButton(product.article)
-                }} />
+                  <img src={product.image} alt={`/`} />
+                  <p className='productsList_item_name'>{product.name}</p>
+                  <p>Article: {product.article}</p>
+                  <p>Color: {product.color}</p>
+                  <p className='productsList_item_price'>Price: $ {product.price}</p>
+                  <Button backgroundColor="red" text="Add to Cart" onClick={() => {
+                    ProductListButton(product.article)
+                  }} />
+                  <Star />
               </li>
             ))}
           </ul>

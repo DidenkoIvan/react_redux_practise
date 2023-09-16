@@ -10,6 +10,7 @@ body {
 body, h1, h2, p {
   margin: 0;
   padding: 0;
+  
 }
 
 code {
@@ -21,8 +22,8 @@ code {
   background-image: url('/public/images/background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
-  display: grid;
-  grid-template-rows: 2.2fr auto 2fr;
+  /* display: grid;
+  grid-template-rows: 2.2fr auto 2fr; */
 }
 
 .favorite-button {
