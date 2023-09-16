@@ -14,14 +14,13 @@ function Products({click}) {
     fetch(url)
       .then((response) => response.json())
       .then((jsonData) => {
-        // Store the fetched data in the component's state
         setData(jsonData);
         localStorage.setItem('products', JSON.stringify(jsonData))
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
-  }, []); // The empty array [] means this effect runs once, similar to componentDidMount in class components
+  }, []); 
 
   const [isArticle, setIsArticle] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);

@@ -1,7 +1,5 @@
-// import React from 'react';
 import Modal from 'react-modal';
-import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom/client';
+import React from 'react';
 import "./Modal.scss";
 import Button from '../Button/Button';
  

@@ -3,12 +3,11 @@ import "./Star.css";
 
 function Star({ favouriteItem }) {
     const [isFavorite, setIsFavorite] = useState(false);
-    
+    const starColor = isFavorite ? 'yellow' : 'gray'; 
+
     const toggleFavorite = () => {
         setIsFavorite(!isFavorite);
       }
-
-    const starColor = isFavorite ? 'yellow' : 'gray';  
     return (
         <div>
             <span onClick={() => {

@@ -3,13 +3,15 @@ import "./Cart.scss";
 import Button from '../Button/Button';
 import ModalForm from '../Modal/Modal';
 
-
 function Cart() {
+  
     const [cart, setCart] = useState([]);
     const [allProducts, setAllProducts] = useState([]);
     const [filteredList2, setFilteredList2] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     let totalPrice = 0;
+
+     console.log(cart.length);
 
     useState(() => {
         const allProd = JSON.parse(localStorage.getItem('products') || '[]');

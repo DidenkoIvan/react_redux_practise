@@ -30,7 +30,7 @@ useEffect(() => {
 // outletcontext
   return (
     <Routes>
-      <Route path="/" element={<Home cartLength={cart.Length} addToCart={addToCart}/>} />
+      <Route path="/" element={<Home addToCart={addToCart}/>} />
       <Route path="/Cart" element={<Cart />}/>
       <Route path="/Favourite" element={<Favourite />}/>
       <Route path="*" element={<NotFound />}/>
@@ -45,7 +45,6 @@ function Home({addToCart}) {
         <ProductsList click={addToCart}/>
         <ProductCards click={addToCart}/> 
       </div>
-      
     </div>
   );
 }
