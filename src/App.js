@@ -5,6 +5,10 @@ import ProductCards from './components/ProductCards/ProductCards';
 import ProductsList from './components/ProductList/ProductsList';
 import Cart from './components/Cart/Cart';
 import Favourite  from './components/Favourite/Favourite';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+
+ 
 
 function App() {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
@@ -40,15 +44,21 @@ useEffect(() => {
 
 function Home({addToCart}) {
   return (
-    <div className='App container'>
-      <div className='main__wrapper'>
-        <ProductsList click={addToCart}/>
-        <ProductCards click={addToCart}/> 
+    <>
+      <Header />
+      <div className='App container'>
+        <div className='main__wrapper'>
+            <ProductsList click={addToCart}/>
+            <ProductCards click={addToCart}/> 
+        </div>
       </div>
-    </div>
+      <Footer />  
+    </>
   );
 }
 
 
 export default App;
+
+
 

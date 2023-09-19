@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import "./Cart.scss";
 import Button from '../Button/Button';
 import ModalForm from '../Modal/Modal';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+ 
 
 function Cart() {  
      
@@ -40,6 +43,7 @@ function Cart() {
 
     return (
         <>
+        <Header />
             <div className="cart">
                 <div className="cart__header">
                     <h2>Shopping Cart</h2>
@@ -73,12 +77,15 @@ function Cart() {
                 <div className='buttons__container'>
                     <Button text={"Place new order"} backgroundColor={"green"} />
                     <Button text={"Clear cart"} backgroundColor={"red"} onClick={() => {
+                        // It`s temporarry solution below, will be changed soon 
                         window.location.reload();
                     }} />
                 </div>
             </div>
+            <Footer /> 
         </>
     )
 }
 
 export default Cart;
+
