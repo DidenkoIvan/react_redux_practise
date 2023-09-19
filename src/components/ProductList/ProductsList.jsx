@@ -3,9 +3,11 @@ import "./ProductList.scss";
 import Button from '../Button/Button';
 import ModalForm from '../Modal/Modal';
 import Star from '../STAR/Star';
+import { connect } from 'react-redux';
+import { loadData, openModal, closeModal } from '../actions';
 
-function ProductList({click}) {
-  const [productsList, setData] = useState(null);
+export function ProductList({ click, data, modalOpen, loadData, openModal, closeModala }) {
+  const [productsList, setProductsList] = useState(null);
   const [isArticle, setIsArticle] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -17,12 +19,14 @@ function ProductList({click}) {
       .then((response) => response.json())
       .then((jsonData) => {
         
-        setData(jsonData);
+        setProductsList(jsonData);
         localStorage.setItem('products', JSON.stringify(jsonData))
+        loadData()
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
+      ;
   }, []);  
 
   const closeModal = () => {
@@ -33,7 +37,6 @@ function ProductList({click}) {
     setIsArticle(article);
   };
 
-  
   return (
     <>
       {productsList ? (
@@ -49,6 +52,7 @@ function ProductList({click}) {
                   <p className='productsList_item_price'>Price: $ {product.price}</p>
                   <Button backgroundColor="red" text="Add to Cart" onClick={() => {
                     ProductListButton(product.article)
+                    modalOpen()
                   }} />
                   <Star />
               </li>
@@ -74,7 +78,19 @@ function ProductList({click}) {
   );
 }
 
-export default ProductList;
+ 
 
 
+const mapStateToProps = (state) => ({
+  data: state.data,
+  modalOpen: state.modalOpen,
+});
+
+const mapDispatchToProps = {
+  loadData,
+  openModal,
+  closeModal,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductList);
 

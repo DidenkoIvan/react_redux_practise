@@ -1,15 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from './reducers';
+ 
+const store = createStore(
+  rootReducer,
+  applyMiddleware(thunk)
+);
 
-// This creates a Redux store, and also automatically
-//  configure the Redux DevTools extension so that you can inspect the store while developing.
-
-export default configureStore({
-    reducer: {
-      counter: counterReducer
-    }
-  })
-
-// const store = configureStore({ reducer: { counter: counterReducer } })
-
-// console.log(store.getState())
+export default store;
