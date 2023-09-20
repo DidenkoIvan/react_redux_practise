@@ -4,7 +4,7 @@ import Button from '../Button/Button';
 import ModalForm from '../Modal/Modal';
 import Star from '../STAR/Star';
 import { connect } from 'react-redux';
-import { loadData, openModal, closeModal } from '../actions';
+import { loadData, openModal, closeModal } from '../../app/actions';
 
 export function ProductList({ click, data, modalOpen, loadData, openModal, closeModala }) {
   const [productsList, setProductsList] = useState(null);

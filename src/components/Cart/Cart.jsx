@@ -40,7 +40,7 @@ function Cart() {
             return prevItems.filter((item, index) => index !== indexToRemove);
         });
     }
-
+    
     return (
         <>
         <Header />
