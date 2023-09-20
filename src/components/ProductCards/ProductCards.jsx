@@ -50,7 +50,7 @@ export function Products({ click, data, modalOpen, loadData, openModal, closeMod
                 <strong><p>Price: $ {product.price}</p></strong>
                 <Button backgroundColor="red" text="Add to Cart" onClick={() => {
                   ProductCardButton(product.article)
-                  modalOpen()
+                  
                 }} />
                 <Star />
               </li>

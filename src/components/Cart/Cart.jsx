@@ -75,8 +75,8 @@ function Cart() {
                     <p>Quantity of products: {filteredList2.length}</p>
                 </div>
                 <div className='buttons__container'>
-                    <Button text={"Place new order"} backgroundColor={"green"} />
-                    <Button text={"Clear cart"} backgroundColor={"red"} onClick={() => {
+                    <Button text="Place new order" backgroundColor="green" />
+                    <Button text="Clear cart" backgroundColor="red" onClick={() => {
                         // It`s temporarry solution below, will be changed soon 
                         window.location.reload();
                     }} />

@@ -1,6 +1,7 @@
 const initialState = {
     data: [],
     modalOpen: false,
+    
   };
   
   const rootReducer = (state = initialState, action) => {
