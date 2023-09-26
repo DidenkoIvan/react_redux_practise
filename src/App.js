@@ -40,8 +40,6 @@ useEffect(() => {
       document.title = 'my App';
     };
   }, []);
-
-
 // TO-DO outletcontext 
   return (
     <Routes>
