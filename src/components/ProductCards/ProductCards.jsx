@@ -3,10 +3,8 @@ import "./ProductCards.scss";
 import Button from '../Button/Button';
 import ModalForm from '../Modal/Modal';
 import Star from '../STAR/Star';
-import { connect } from 'react-redux';
-import { loadData, openModal, closeModal } from '../../app/actions';
 
-export function Products({ click, data, modalOpen, loadData, openModal, closeModala }) {
+function ProductCards({ click, data, modalOpen }) {
   const [productCards, setProductCards] = useState(null);
 
   useEffect(() => {
@@ -18,7 +16,6 @@ export function Products({ click, data, modalOpen, loadData, openModal, closeMod
       .then((jsonData) => {
         setProductCards(jsonData);
         localStorage.setItem('products1', JSON.stringify(jsonData))
-        loadData()
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
@@ -50,7 +47,6 @@ export function Products({ click, data, modalOpen, loadData, openModal, closeMod
                 <strong><p>Price: $ {product.price}</p></strong>
                 <Button backgroundColor="red" text="Add to Cart" onClick={() => {
                   ProductCardButton(product.article)
-                  
                 }} />
                 <Star />
               </li>
@@ -75,19 +71,6 @@ export function Products({ click, data, modalOpen, loadData, openModal, closeMod
   );
 }
 
- 
-
-const mapStateToProps = (state) => ({
-  data: state.data,
-  modalOpen: state.modalOpen,
-});
-
-const mapDispatchToProps = {
-  loadData,
-  openModal,
-  closeModal,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Products);
+export default ProductCards;
 
 

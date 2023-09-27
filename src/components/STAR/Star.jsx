@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "./Star.css";
 
-function Star({ favouriteItem }) {
+function Star() {
     const [isFavorite, setIsFavorite] = useState(false);
     const starColor = isFavorite ? 'yellow' : 'gray'; 
 

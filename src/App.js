@@ -31,16 +31,7 @@ useEffect(() => {
       return newArray
     })
   }
-//changing page title
-  useEffect(() => {
-    // Update the page title when the component mounts
-    document.title = 'my App';
-    // You can also reset the title when the component unmounts
-    return () => {
-      document.title = 'my App';
-    };
-  }, []);
-// TO-DO outletcontext 
+ 
   return (
     <Routes>
       <Route path="/" element={<Home addToCart={addToCart}/>} />
