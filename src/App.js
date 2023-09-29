@@ -8,8 +8,6 @@ import Favourite  from './components/Favourite/Favourite';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
- 
-
 function App() {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
   

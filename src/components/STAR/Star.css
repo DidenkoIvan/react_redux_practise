@@ -1,5 +1,8 @@
+ .start__wrapper {
+    user-select: none;
+ } 
+ 
 .yellow {
-    
     filter: hue-rotate(0deg);
 }
 

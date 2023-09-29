@@ -8,7 +8,7 @@ function ProductList({ click, data, modalOpen }) {
   const [productsList, setProductsList] = useState(null);
   const [isArticle, setIsArticle] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+   
   useEffect(() => {
 
     const url = './products.json';

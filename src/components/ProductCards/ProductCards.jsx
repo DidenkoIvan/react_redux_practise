@@ -3,7 +3,7 @@ import "./ProductCards.scss";
 import Button from '../Button/Button';
 import ModalForm from '../Modal/Modal';
 import Star from '../STAR/Star';
-
+ 
 function ProductCards({ click, data, modalOpen }) {
   const [productCards, setProductCards] = useState(null);
 
@@ -40,7 +40,7 @@ function ProductCards({ click, data, modalOpen }) {
           <ul className='productCards__list'>
             {productCards.map(product => (
               <li className='productCards__list_item' key={product.name}>
-                <img src={product.image} alt={`Image`} />
+                <img src={product.image} alt={`card`} />
                 <p>{product.name}</p>
                 <p>Article: {product.article}</p>
                 <p>Color: {product.color}</p>
