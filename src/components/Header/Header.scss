@@ -28,11 +28,12 @@
 }
 
 .header_icon {
-    width: 16%;
+    width: 84%;
     height: 40%;
     margin: 10px;
     cursor: pointer;
     border-radius: 30px;
+    // background-color: #fff;
 }
 
 .header_icon a {
@@ -86,14 +87,17 @@
 }
 
 .header_favorite:hover {
+    transition: .6s;
     background-color: rgb(133, 165, 245);
     border-radius: 30px;
 }
 
 .header_cart:hover {
+    transition: .6s;
     background-color: rgb(133, 165, 245);
 }
 
 .header_icon:hover {
+    transition: .6s;
     background-color: rgb(133, 165, 245);
 }

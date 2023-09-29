@@ -3,6 +3,7 @@ import "./ProductCards.scss";
 import Button from '../Button/Button';
 import ModalForm from '../Modal/Modal';
 import Star from '../STAR/Star';
+import SolarSystem from '../SolarSystem/SolarSystem';
  
 function ProductCards({ click, data, modalOpen }) {
   const [productCards, setProductCards] = useState(null);
@@ -63,6 +64,7 @@ function ProductCards({ click, data, modalOpen }) {
               closeModal()
             }}/>}
           />
+          <SolarSystem />
         </div>
       ) : (
         <p>Loading...</p>
