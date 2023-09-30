@@ -3,12 +3,24 @@ import "./ProductList.scss";
 import Button from '../Button/Button';
 import ModalForm from '../Modal/Modal';
 import Star from '../STAR/Star';
+import { useDispatch, useSelector } from 'react-redux';
+import { openModalFromList, closeModalFromList  } from '../../features/productListSlice';
 
 function ProductList({ click, data, modalOpen }) {
   const [productsList, setProductsList] = useState(null);
-  const [isArticle, setIsArticle] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
   
+  const dispatch = useDispatch();
+  const isModalOpen = useSelector((state) => state.PROD_LIST_MODAL.openModalFromList);
+  const article = useSelector((state) => state.PROD_LIST_MODAL.article);
+  
+  const ProductCardButton = (article) => {
+    dispatch(openModalFromList(article));
+  };
+
+  const closeModalHandler = () => {
+    dispatch(closeModalFromList());
+  };
+
   useEffect(() => {
 
     const url = './products.json';
@@ -26,15 +38,6 @@ function ProductList({ click, data, modalOpen }) {
       ;
   }, []);  
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const ProductListButton = (article) => {
-    setIsModalOpen(true);
-    setIsArticle(article);
-  };
- 
   return (
     <>
       {productsList ? (
@@ -49,21 +52,21 @@ function ProductList({ click, data, modalOpen }) {
                   <p>Color: {product.color}</p>
                   <p className='productsList_item_price'>Price: $ {product.price}</p>
                   <Button backgroundColor="red" text="Add to Cart" onClick={() => {
-                    ProductListButton(`${product.name}`)
+                    ProductCardButton(`${product.name}`)
                   }} />
                   <Star />
               </li>
             ))}
           </ul>
           <ModalForm isOpen={isModalOpen} 
-            article={isArticle}
+            article={article}
             header={"Would you like to add this product into the cart ?"}
             text={"Would you like to add this product into the cart ?"}
-            closeButton={closeModal}
+            closeButton={closeModalHandler}
             action={<Button text="Nope" backgroundColor="pink" />}
             actionOk={<Button text="Ok" backgroundColor="Green" onClick={() => {
-              click(isArticle)
-              closeModal()
+              click(article)
+              closeModalHandler()
             }}/>}
           />
         </div>
