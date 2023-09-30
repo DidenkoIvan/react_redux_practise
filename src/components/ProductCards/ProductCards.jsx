@@ -3,9 +3,23 @@ import "./ProductCards.scss";
 import Button from '../Button/Button';
 import ModalForm from '../Modal/Modal';
 import Star from '../STAR/Star';
+import { useDispatch, useSelector } from 'react-redux';
+import { openModalCards, closeModalCards } from '../../features/productCardsSlice';
 
 function ProductCards({ click, data, modalOpen }) {
   const [productCards, setProductCards] = useState(null);
+  
+  const dispatch = useDispatch();
+  const isModalOpen = useSelector((state) => state.PROD_CARDS_MODAL.openModalCards);
+  const article = useSelector((state) => state.PROD_CARDS_MODAL.article);
+
+  const ProductCardButton = (article) => {
+    dispatch(openModalCards(article));
+  };
+
+  const closeModalHandler = () => {
+    dispatch(closeModalCards());
+  };
 
   useEffect(() => {
 
@@ -21,16 +35,6 @@ function ProductCards({ click, data, modalOpen }) {
         console.error('Error fetching data:', error);
       });
   }, []); 
-
-  const [isArticle, setIsArticle] = useState("");
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-  const ProductCardButton = (article) => {
-    setIsModalOpen(true);
-    setIsArticle(article);
-  };
 
   return (
     <>
@@ -53,14 +57,14 @@ function ProductCards({ click, data, modalOpen }) {
             ))}
           </ul>
           <ModalForm isOpen={isModalOpen} 
-            article={isArticle}
+            article={article}
             header={"Would you like to add this product into the cart ?"}
             text={"Would you like to add this product into the cart ?"}
-            closeButton={closeModal}
+            closeButton={closeModalHandler}
             action={<Button text="Nope" backgroundColor="pink" />}
             actionOk={<Button text="Ok" backgroundColor="Green" onClick={() => {
-              click(isArticle)
-              closeModal()
+              click(article)
+              closeModalHandler()
             }}/>}
           />
         </div>

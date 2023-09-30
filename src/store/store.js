@@ -1,14 +1,10 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { reducer as favouriteReducer } from "./favourites/favourites.slice";
+import { configureStore } from '@reduxjs/toolkit';
+import modalReducer from '../features/productCardsSlice';
+import modalReducer2 from '../features/productListSlice'
 
-
-
-const reducers = combineReducers({
-    favourites: favouriteReducer,
+export default configureStore({
+  reducer: {
+    PROD_CARDS_MODAL: modalReducer,
+    PROD_LIST_MODAL: modalReducer2
+  }
 })
-
-export const store = configureStore({
-    reducer: reducers,
-    devTools: true,
-})
-

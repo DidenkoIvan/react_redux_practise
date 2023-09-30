@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import "./Star.css";
 import { useDispatch, useSelector } from 'react-redux';
-import { actions } from '../../store/favourites/favourites.slice';
 
 function Star() {
     const [isFavorite, setIsFavorite] = useState(false);
     const dispatch = useDispatch();
-    const favourites = useSelector(state => state.favourites)
+     
 
     const starColor = isFavorite ? 'yellow' : 'gray'; 
     
@@ -19,7 +18,6 @@ function Star() {
                 className={starColor} 
                 onClick={() => {
                     toggleFavorite()
-                    dispatch(actions.toggleAddToFavourites)
                 }} 
                 style={{cursor: 'pointer'}}>⭐
             </span>    
