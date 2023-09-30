@@ -1,7 +1,8 @@
 import './Favourite.scss';
 import React, { useState } from 'react';
 import Star from '../STAR/Star'
-// import Header from "./components/Header/Header";
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 function Favourite() {
     const [favorites, setFavorites] = useState([]);
@@ -17,6 +18,7 @@ function Favourite() {
 
     return (
         <>
+            < Header />
             <div>
                 <h1>Favorite Items</h1>
                 <div>
@@ -28,6 +30,7 @@ function Favourite() {
                     </ul>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

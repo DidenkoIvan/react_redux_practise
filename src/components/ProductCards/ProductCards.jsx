@@ -3,7 +3,7 @@ import "./ProductCards.scss";
 import Button from '../Button/Button';
 import ModalForm from '../Modal/Modal';
 import Star from '../STAR/Star';
- 
+
 function ProductCards({ click, data, modalOpen }) {
   const [productCards, setProductCards] = useState(null);
 
@@ -14,7 +14,7 @@ function ProductCards({ click, data, modalOpen }) {
     fetch(url)
       .then((response) => response.json())
       .then((jsonData) => {
-        setProductCards(jsonData);
+        setTimeout(() => {setProductCards(jsonData)  }, 3000)
         localStorage.setItem('products1', JSON.stringify(jsonData))
       })
       .catch((error) => {
@@ -46,7 +46,7 @@ function ProductCards({ click, data, modalOpen }) {
                 <p>Color: {product.color}</p>
                 <strong><p>Price: $ {product.price}</p></strong>
                 <Button backgroundColor="red" text="Add to Cart" onClick={() => {
-                  ProductCardButton(product.article)
+                  ProductCardButton(`${product.name}`)
                 }} />
                 <Star />
               </li>
@@ -65,7 +65,7 @@ function ProductCards({ click, data, modalOpen }) {
           />
         </div>
       ) : (
-        <p>Loading...</p>
+        <p>Loading please wait...</p>
       )}
     </>
   );

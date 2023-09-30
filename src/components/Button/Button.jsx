@@ -1,5 +1,3 @@
-import React, { useState } from 'react';
-import ModalForm from '../Modal/Modal';
 import "./Button.scss";
 
 function Button(props) {

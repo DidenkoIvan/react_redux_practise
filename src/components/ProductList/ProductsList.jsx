@@ -8,7 +8,7 @@ function ProductList({ click, data, modalOpen }) {
   const [productsList, setProductsList] = useState(null);
   const [isArticle, setIsArticle] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-   
+  
   useEffect(() => {
 
     const url = './products.json';
@@ -16,8 +16,8 @@ function ProductList({ click, data, modalOpen }) {
     fetch(url)
       .then((response) => response.json())
       .then((jsonData) => {
-        
-        setProductsList(jsonData);
+      
+        setTimeout(() => {setProductsList(jsonData) }, 2000)
         localStorage.setItem('products', JSON.stringify(jsonData))
       })
       .catch((error) => {
@@ -29,11 +29,12 @@ function ProductList({ click, data, modalOpen }) {
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
   const ProductListButton = (article) => {
     setIsModalOpen(true);
     setIsArticle(article);
   };
-
+ 
   return (
     <>
       {productsList ? (
@@ -48,7 +49,7 @@ function ProductList({ click, data, modalOpen }) {
                   <p>Color: {product.color}</p>
                   <p className='productsList_item_price'>Price: $ {product.price}</p>
                   <Button backgroundColor="red" text="Add to Cart" onClick={() => {
-                    ProductListButton(product.article)
+                    ProductListButton(`${product.name}`)
                   }} />
                   <Star />
               </li>
@@ -68,7 +69,7 @@ function ProductList({ click, data, modalOpen }) {
         </div>
 
       ) : (
-        <p>Loading...</p>
+        <p>Loading please wait...</p>
       )}
     </>
   );
