@@ -7,7 +7,7 @@ import SolarSystem from "../SolarSystem/SolarSystem";
 
 function Header() {
     const [quantityOfProdsInCart, setQuantityOfProdsInCart] = useState(0);
-
+    console.log(quantityOfProdsInCart);
     useState(() => {
         const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
         setQuantityOfProdsInCart(savedCart.length);
@@ -20,7 +20,6 @@ function Header() {
                     <SolarSystem />
                 </div>
             </Link>
-            
             <ul className="header_items">
                 <li className="header_favorite"><Link to="/Favourite">⭐</Link></li> 
                 <li className="header_cart">
