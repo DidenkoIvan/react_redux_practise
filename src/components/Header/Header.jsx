@@ -4,7 +4,6 @@ import { BsFillBasketFill } from "react-icons/bs";
 import React, { useState, useEffect } from 'react';
 import SolarSystem from "../SolarSystem/SolarSystem";
 
-
 function Header() {
     const [quantityOfProdsInCart, setQuantityOfProdsInCart] = useState(0);
     console.log(quantityOfProdsInCart);
@@ -19,7 +18,7 @@ function Header() {
                 <div className="header_icon">
                     <SolarSystem />
                 </div>
-            </Link>
+            </Link>            
             <ul className="header_items">
                 <li className="header_favorite"><Link to="/Favourite">⭐</Link></li> 
                 <li className="header_cart">

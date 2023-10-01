@@ -24,6 +24,7 @@ code {
   background-repeat: no-repeat;
   /* display: grid;
   grid-template-rows: 2.2fr auto 2fr; */
+  position: relative;
 }
 
 .favorite-button {
@@ -51,3 +52,52 @@ code {
 .main__wrapper {
   display: flex;
 }
+
+.light-theme .header {
+  background-color: #775b5b;
+  color: #8a234a;
+}
+
+.light-theme .header .header_cart a{
+  color: #2e0a0a;
+}
+
+.dark-theme .App {
+  background-image: url('/public/images/dark-blue-solid-color-background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.dark-theme .productCards__list_item {
+  background-color: #532929;
+}
+
+.dark-theme .productsList {
+  background-color: #532929;
+}
+
+.dark-theme .productsList_item_name {
+  background-color: #532929;
+}
+
+.dark-theme .productsList_item p {
+  background-color: #532929;
+}
+
+.theme_switcher {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #007bff;  
+  color: #fff;  
+  border: none; 
+  padding: 10px 20px;  
+  cursor: pointer;  
+  border-radius: 5px;  
+  transition: background-color 0.3s ease;  
+}
+
+.theme_switcher:hover {
+  background-color: #0056b3;  
+}
+ 
