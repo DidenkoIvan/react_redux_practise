@@ -7,6 +7,8 @@ import Cart from './components/Cart/Cart';
 import Favourite  from './components/Favourite/Favourite';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import ThemeSwitcher from './ThemeSwitcher/ThemeSwitcher';
+import { useTheme } from './ThemeContext/ThemeContext';
 
 function App() {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
@@ -41,16 +43,20 @@ useEffect(() => {
 }
 
 function Home({addToCart}) {
+  const { theme } = useTheme();
   return (
     <>
-      <Header />
-      <div className='App container'>
-        <div className='main__wrapper'>
-            <ProductsList click={addToCart}/>
-            <ProductCards click={addToCart}/> 
+      <div className={`${theme}-theme`}> 
+        <Header />
+        <div className='App container'>
+        <ThemeSwitcher />
+          <div className='main__wrapper'>
+              <ProductsList click={addToCart}/>
+              <ProductCards click={addToCart}/> 
+          </div>
         </div>
+        <Footer />  
       </div>
-      <Footer />  
     </>
   );
 }
