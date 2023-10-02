@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import NotFound from './components/NotFound/NotFound';
 import ProductCards from './components/ProductCards/ProductCards';
@@ -12,17 +12,17 @@ import { useTheme } from './ThemeContext/ThemeContext';
 
 function App() {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')) || []);
-  
-useEffect(() => {
-    window.addEventListener('beforeunload', clearLocalStorage);
-    return () => {
-      window.removeEventListener('beforeunload', clearLocalStorage);
-    };
-  }, []);
+  console.log(cart);
+// useEffect(() => {
+//     window.addEventListener('beforeunload', clearLocalStorage);
+//     return () => {
+//       window.removeEventListener('beforeunload', clearLocalStorage);
+//     };
+//   }, []);
 
-  const clearLocalStorage = () => {
-    localStorage.clear();
-  };
+//   const clearLocalStorage = () => {
+//     localStorage.clear();
+//   };
 
   function addToCart(article) {
     setCart((prev) => {
