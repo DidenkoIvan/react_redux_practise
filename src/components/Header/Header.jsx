@@ -1,12 +1,12 @@
 import "./Header.scss";
 import { Link } from 'react-router-dom';
 import { BsFillBasketFill } from "react-icons/bs";
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import SolarSystem from "../SolarSystem/SolarSystem";
 
 function Header() {
     const [quantityOfProdsInCart, setQuantityOfProdsInCart] = useState(0);
-    console.log(quantityOfProdsInCart);
+    
     useState(() => {
         const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
         setQuantityOfProdsInCart(savedCart.length);

@@ -4,24 +4,15 @@ import Button from '../Button/Button';
 import ModalForm from '../Modal/Modal';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
 import FormUserInfo from '../FormUserInfo/FormUserInfo';
  
 
-function Cart({ onSubmit }) {  
+function Cart() {  
     const [cart, setCart] = useState([]);
     const [allProducts, setAllProducts] = useState([]);
     const [filteredList2, setFilteredList2] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
   
-    const initialValues = {
-        firstName: '',
-        lastName: '',
-        age: '',
-        address: '',
-        mobile: '',
-      };
     const isCartEmpty = filteredList2.length === 0;
     let totalPrice = 0;
 

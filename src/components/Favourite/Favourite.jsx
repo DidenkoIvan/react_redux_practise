@@ -1,6 +1,5 @@
 import './Favourite.scss';
 import React, { useState } from 'react';
-import Star from '../STAR/Star'
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
