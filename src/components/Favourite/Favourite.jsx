@@ -1,20 +1,10 @@
 import './Favourite.scss';
-import React, { useState } from 'react';
+import React from 'react';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
 function Favourite() {
-    const [favorites, setFavorites] = useState([]);
-
-
-    const toggleFavorite = (favouriteItem) => {
-        if (favorites.includes(favouriteItem)) {
-            setFavorites(favorites.filter((item) => item !== favouriteItem));
-        } else {
-            setFavorites([...favorites, favouriteItem]);
-        }
-    };
-
+  
     return (
         <>
             < Header />
@@ -23,9 +13,9 @@ function Favourite() {
                 <div>
                     <h2>Favorites:</h2>
                     <ul>
-                        {favorites.map((favorite) => (
+                        {/* {favorites.map((favorite) => (
                             <li key={favorite}>{favorite}</li>
-                        ))}
+                        ))} */}
                     </ul>
                 </div>
             </div>

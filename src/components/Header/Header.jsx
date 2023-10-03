@@ -18,7 +18,7 @@ function Header() {
                 <div className="header_icon">
                     <SolarSystem />
                 </div>
-            </Link>            
+            </Link>           
             <ul className="header_items">
                 <li className="header_favorite"><Link to="/Favourite">⭐</Link></li> 
                 <li className="header_cart">

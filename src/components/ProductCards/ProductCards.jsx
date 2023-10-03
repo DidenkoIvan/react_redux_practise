@@ -6,7 +6,7 @@ import Star from '../STAR/Star';
 import { useDispatch, useSelector } from 'react-redux';
 import { openModalCards, closeModalCards } from '../../features/productCardsSlice';
 
-function ProductCards({ click, data, modalOpen }) {
+function ProductCards({ click, data, modalOpen, toogleFavorite }) {
   const [productCards, setProductCards] = useState(null);
   
   const dispatch = useDispatch();
@@ -52,7 +52,9 @@ function ProductCards({ click, data, modalOpen }) {
                 <Button backgroundColor="red" text="Add to Cart" onClick={() => {
                   ProductCardButton(`${product.name}`)
                 }} />
-                <Star />
+                <Star toogleFavorite={() => {
+                  toogleFavorite(product.article)
+                }}/>
               </li>
             ))}
           </ul>
